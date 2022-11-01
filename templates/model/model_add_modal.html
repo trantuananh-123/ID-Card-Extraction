@@ -1,0 +1,30 @@
+<div class="modal fade" id="addForm" tabindex="-1" role="dialog" aria-labelledby="addFormTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addFormTitle">Thêm nhãn</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form name="addModelForm" id="addModelForm" action="{{ url_for('model.model_save') }}" method="POST" enctype="multipart/form-data">
+                    <label for="file">Chọn file: </label>
+                    <input type="file" name="file" id="add-file">
+                    <p id="model_file_error" class="invalid-feedback">File không được để trống
+                    </p>
+                    <br>
+                    <label for="status">Trạng thái: </label><br>
+                    <select name="status">
+                        <option value="1">Đã được sử dụng</option>
+                        <option value="0" selected>Chưa được sử dụng</option>
+                    </select>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="addModel()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="modal fade" id="editForm" tabindex="-1" role="dialog" aria-labelledby="editFormTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editFormTitle">Cập nhật mô hình</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form name="editModelForm" id="editModelForm" action="{{ url_for('model.model_update') }}" method="POST" enctype="multipart/form-data">
+                    <input id="edit_id" type="hidden" name="edit_id" value="" />
+                    <label for="file">Chọn file: </label>
+                    <input type="file" name="file" id="edit-file">
+                    <p id="edit_model_file_error" class="invalid-feedback">File không được để trống
+                    </p>
+                    <br>
+                    <label for="name">Tên file: <span id="name" class="font-weight-bold"></span></label><br>
+                    <label for="status">Trạng thái: </label><br>
+                    <select name="status" id="status">
+                        <option value="1">Đã được sử dụng</option>
+                        <option value="0" selected>Chưa được sử dụng</option>
+                    </select>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="editModel()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

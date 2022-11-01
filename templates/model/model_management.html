@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Homepage</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{{ url_for('static', filename = 'images/icon.jpg') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/custom.css') }}">
+</head>
+
+<body>
+    {% include 'client/header.html' %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="offset-1 col-xl-10 col-lg-10 col-md-10 col-sm-10 text-center" style="margin-top: 100px;">
+                <h1 class="font-weight-bold">Quản lý mô hình</h1>
+            </div>
+            <div class="offset-1 col-xl-10 col-lg-10 col-md-10 col-sm-10 text-right">
+                <button type="button" class="btn" style="background-color: #82b366;" data-toggle="modal"
+                    data-target="#addForm">Thêm mới</button>
+            </div>
+        </div>
+        <div class="row mt-2 mb-5">
+            <div class="offset-1 col-xl-10 col-lg-10 col-md-10 col-sm-10">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>ID</th>
+                            <th>Tên mô hình</th>
+                            <th>Accurancy</th>
+                            <th>Precision</th>
+                            <th>Recall</th>
+                            <th>F1 Score</th>
+                            <th>Ngày tạo</th>
+                            <th>Ngày cập nhật</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for index, model in model_list %}
+                        <tr>
+                            <td class="text-center">{{ index + 1 }}</td>
+                            <td class="text-center">{{ model.id }}</td>
+                            <td class="text-center">{{ model.name }}</td>
+                            {% if model.accurancy == None %}
+                            <td class="text-center"></td>
+                            {% else %}
+                            <td class="text-center">{{ model.accurancy }}</td>
+                            {% endif %}
+                            {% if model.precision == None %}
+                            <td class="text-center"></td>
+                            {% else %}
+                            <td class="text-center">{{ model.precision }}</td>
+                            {% endif %}
+                            {% if model.recall == None %}
+                            <td class="text-center"></td>
+                            {% else %}
+                            <td class="text-center">{{ model.recall }}</td>
+                            {% endif %}
+                            {% if model.f1_score == None %}
+                            <td class="text-center"></td>
+                            {% else %}
+                            <td class="text-center">{{ model.f1_score }}</td>
+                            {% endif %}
+                            {% if model.create_date == None %}
+                            <td class="text-center"></td>
+                            {% else %}
+                            <td class="text-center">{{ model.create_date }}</td>
+                            {% endif %}
+                            {% if model.update_date == None %}
+                            <td class="text-center"></td>
+                            {% else %}
+                            <td class="text-center">{{ model.update_date }}</td>
+                            {% endif %}
+                            {% if model.status == False %}
+                            <td class="text-center">Chưa được sử dụng</td>
+                            {% else %}
+                            <td class="text-center">Đang được sử dụng</td>
+                            {% endif %}
+                            <td class="text-center">
+                                <input type="button" id="{{model.id}}" class="btn edit-btn"
+                                    style="background-color: #dae8fc;" data-toggle="modal" data-target="#editForm"
+                                    value="Sửa">
+                                <input type="button" id="{{model.id}}" class="btn delete-btn"
+                                    style="background-color: #f8cecc;" data-toggle="modal" data-target="#deleteForm"
+                                    value="Xóa">
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% include 'model/model_add_modal.html' %}
+        {% include 'model/model_edit_modal.html' %}
+        {% include 'model/model_delete_modal.html' %}
+    </div>
+    <script src="{{ url_for('static', filename='js/jquery-3.2.1.slim.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/model_custom.js') }}"></script>
+</body>
+
+</html>
