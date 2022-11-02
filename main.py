@@ -11,6 +11,7 @@ from flask_dropzone import Dropzone
 
 from api.label_api import label
 from api.model_api import model
+from api.example_api import example
 
 import os
 import cv2
@@ -23,6 +24,7 @@ from extract import extract
 # Khởi tạo Flask Server Backend
 app = Flask(__name__)
 app.register_blueprint(label, url_prefix='/label')
+app.register_blueprint(example, url_prefix='/example')
 app.register_blueprint(model, url_prefix='/model')
 
 # SqlAlchemy Database Configuration With Mysql

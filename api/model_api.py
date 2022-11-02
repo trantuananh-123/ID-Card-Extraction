@@ -76,6 +76,10 @@ def model_delete():
     if request.method == 'POST':
         if request.form:
             model = Model.query.get(request.form['delete_id'])
+            
+            if os.path.exists(model.url):
+                os.remove(model.url)
+                
             db.session.delete(model)
             db.session.commit()
 

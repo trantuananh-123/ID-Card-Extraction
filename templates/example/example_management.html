@@ -15,7 +15,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="offset-2 col-xl-8 col-lg-8 col-md-8 col-sm-8 text-center" style="margin-top: 100px;">
-                <h1 class="font-weight-bold">Quản lý nhãn</h1>
+                <h1 class="font-weight-bold">Quản lý mẫu</h1>
             </div>
             <div class="offset-2 col-xl-8 col-lg-8 col-md-8 col-sm-8 text-right">
                 <button type="button" class="btn" style="background-color: #82b366;" data-toggle="modal"
@@ -29,7 +29,8 @@
                         <tr>
                             <th>STT</th>
                             <th>ID</th>
-                            <th>Tên nhãn</th>
+                            <th>Tên mẫu</th>
+                            <th>URL</th>
                             <th>Ngày tạo</th>
                             <th>Ngày cập nhật</th>
                             <th>Trạng thái</th>
@@ -37,27 +38,28 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for index, label in label_list %}
+                        {% for index, example in example_list %}
                         <tr>
                             <td class="text-center">{{ index + 1 }}</td>
-                            <td class="text-center">{{ label.id }}</td>
-                            <td class="text-center">{{ label.name }}</td>
-                            <td class="text-center">{{ label.create_date }}</td>
-                            {% if label.update_date == None %}
+                            <td class="text-center">{{ example.id }}</td>
+                            <td class="text-center">{{ example.name }}</td>
+                            <td class="text-center">{{ example.url }}</td>
+                            <td class="text-center">{{ example.create_date }}</td>
+                            {% if example.update_date == None %}
                             <td></td>
                             {% else %}
-                            <td class="text-center">{{ label.update_date }}</td>
+                            <td class="text-center">{{ example.update_date }}</td>
                             {% endif %}
-                            {% if label.status == False %}
-                            <td class="text-center">Chưa được train</td>
+                            {% if example.status == False %}
+                            <td class="text-center">Chưa được sử dụng</td>
                             {% else %}
-                            <td class="text-center">Đã được train</td>
+                            <td class="text-center">Đã được sử dụng</td>
                             {% endif %}
                             <td class="text-center">
-                                <input type="button" id="{{label.id}}" class="btn edit-btn"
+                                <input type="button" id="{{example.id}}" class="btn edit-btn"
                                     style="background-color: #dae8fc;" data-toggle="modal" data-target="#editForm"
                                     value="Sửa">
-                                <input type="button" id="{{label.id}}" class="btn delete-btn"
+                                <input type="button" id="{{example.id}}" class="btn delete-btn"
                                     style="background-color: #f8cecc;" data-toggle="modal" data-target="#deleteForm"
                                     value="Xóa">
                             </td>
@@ -67,14 +69,14 @@
                 </table>
             </div>
         </div>
-        {% include 'label/label_add_modal.html' %}
-        {% include 'label/label_edit_modal.html' %}
-        {% include 'label/label_delete_modal.html' %}
+        {% include 'example/example_add_modal.html' %}
+        {% include 'example/example_edit_modal.html' %}
+        {% include 'example/example_delete_modal.html' %}
     </div>
     <script src="{{ url_for('static', filename='js/jquery-3.2.1.slim.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/label_custom.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/example_custom.js') }}"></script>
 </body>
 
 </html>
