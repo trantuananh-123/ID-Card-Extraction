@@ -1,0 +1,46 @@
+* {
+    box-sizing           : border-box;
+    padding              : 0;
+    margin               : 0;
+    font-family          : Inter;
+    font-feature-settings: "case"on;
+}
+
+table {
+    border         : 0;
+    width          : 100%;
+    margin-bottom  : 1rem;
+    border-collapse: collapse;
+}
+
+table th {
+    border     : 1px solid #dee2e6;
+    background : #eceff2;
+    font-style : normal;
+    font-weight: 700;
+    font-size  : 16px;
+    line-height: 24px;
+    text-align : center;
+    color      : #3b4850;
+}
+
+table td {
+    font-style    : normal;
+    font-weight   : 400;
+    font-size     : 14px;
+    line-height   : 24px;
+    letter-spacing: .005em;
+    text-overflow : ellipsis;
+    overflow      : hidden;
+    color         : #3b4850;
+    max-width     : 250px !important;
+    border        : 1px solid #dee2e6;
+}
+
+table tr:nth-child(2n) {
+    background-color: #eee;
+}
+
+p {
+    margin: 0 !important;
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Homepage</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{{ url_for('static', filename = 'images/icon.jpg') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/custom.css') }}">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row mt-5">
+            <div class="offset-2 col-xl-8 col-lg-8 col-md-8 col-sm-8 text-center">
+                <h1 class="font-weight-bold">Quản lý nhãn</h1>
+            </div>
+            <div class="offset-2 col-xl-8 col-lg-8 col-md-8 col-sm-8 text-right">
+                <button type="button" class="btn" style="background-color: #82b366;" data-toggle="modal"
+                    data-target="#addForm">Thêm mới</button>
+            </div>
+        </div>
+        <div class="row mt-2 mb-5">
+            <div class="offset-2 col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>ID</th>
+                            <th>Tên nhãn</th>
+                            <th>Ngày tạo</th>
+                            <th>Ngày cập nhật</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for index, label in label_list %}
+                        <tr>
+                            <td class="text-center">{{ index + 1 }}</td>
+                            <td class="text-center">{{ label.id }}</td>
+                            <td class="text-center">{{ label.name }}</td>
+                            <td class="text-center">{{ label.create_date }}</td>
+                            {% if label.update_date == None %}
+                            <td></td>
+                            {% else %}
+                            <td class="text-center">{{ label.update_date }}</td>
+                            {% endif %}
+                            {% if label.status == False %}
+                            <td class="text-center">Chưa được train</td>
+                            {% else %}
+                            <td class="text-center">Đã được train</td>
+                            {% endif %}
+                            <td class="text-center">
+                                <input type="button" id="{{label.id}}" class="btn edit-btn"
+                                    style="background-color: #dae8fc;" data-toggle="modal" data-target="#editForm"
+                                    value="Sửa">
+                                <input type="button" id="{{label.id}}" class="btn delete-btn"
+                                    style="background-color: #f8cecc;" data-toggle="modal" data-target="#deleteForm"
+                                    value="Xóa">
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% include 'label/label_add_modal.html' %}
+        {% include 'label/label_edit_modal.html' %}
+        {% include 'label/label_delete_modal.html' %}
+    </div>
+    <script src="{{ url_for('static', filename='js/jquery-3.2.1.slim.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/label_custom.js') }}"></script>
+</body>
+
+</html>
