@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Crop Image</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="{{ url_for('static', filename = 'images/icon.jpg') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename = 'css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename = 'css/custom.css') }}">
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row mb-3">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6" style="margin-top: 100px;">
+                    <form
+                        name="cropImageID"
+                        id="cropImageID"
+                        action="{{ url_for('crop_image_crop') }}"
+                        method="POST"
+                        enctype="multipart/form-data"
+                    >
+                        <div class="drop-zone">
+                            <span class="drop-zone__prompt">Drop file here or click to upload</span>
+                            <input type="file" name="file" class="drop-zone__input">
+                        </div>
+                    </form>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6" style="margin-top: 100px;">
+                    <div class="drop-zone">
+                        <ul>
+                            {% for result in result_list %}
+                            <li>
+                                <img src="{{ result }}" alt="">
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 text-center">
+                    <button
+                        type="button"
+                        class="btn"
+                        style="background-color: #f8cecc;"
+                        id="remove-btn"
+                    >Gỡ file</button>
+                    <button
+                        type="button"
+                        class="btn"
+                        style="background-color: #82b366;"
+                        id="upload-btn"
+                        onclick="cropImage()"
+                    >Cắt ảnh</button>
+                </div>
+            </div>
+        </div>
+        <script src="{{ url_for('static', filename='js/jquery-3.2.1.slim.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+    </body>
+</html>
