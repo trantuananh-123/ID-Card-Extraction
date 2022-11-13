@@ -79,6 +79,27 @@ function uploadFile() {
     }
 }
 
+function cropImage() {
+    file = document.cropImageID.file.value;
+    if (file) {
+        document.getElementById('cropImageID').submit();
+    }
+}
+
+function extract() {
+    file = document.extractImageID.file.value;
+    if (file) {
+        document.getElementById('extractImageID').submit();
+    }
+}
+
+function corner() {
+    file = document.cornerImageID.file.value;
+    if (file) {
+        document.getElementById('cornerImageID').submit();
+    }
+}
+
 const callToActionBtns = document.querySelectorAll(".menu-btn");
 
 callToActionBtns.forEach((btn) => {
