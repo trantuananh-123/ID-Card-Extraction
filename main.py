@@ -55,8 +55,8 @@ def predict_yolov7():
         # frame = cv2.imread(path_to_save)
         # cv2.imwrite(path_to_save, frame)
 
-        original_image, img, coordinate, classes, confidence, classes_id = predict('D:/Nam-4/Nam-4/HTTM/Flask/yolov7/weights/best.pt',
-                                                                                   'D:/Nam-4/Nam-4/HTTM/Flask/yolov7/data/my_dataset.yaml', path_to_save)
+        original_image, img, coordinate, classes, confidence, classes_id = predict('./weights/best(1).pt',
+                                                                                   './data/my_dataset.yaml', path_to_save)
 
         result = Image.fromarray(img)
         result.save(path_to_save)
@@ -98,6 +98,7 @@ def predict_yolov7():
 @app.route('/')
 def index():
     return render_template('client/home.html')
+
 
 # Start Backend
 if __name__ == '__main__':

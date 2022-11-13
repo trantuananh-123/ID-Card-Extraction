@@ -10,6 +10,7 @@ config['device'] = 'cpu'
 
 detector = Predictor(config)
 
+
 def extract(crop_img):
     img = Image.fromarray(crop_img)
     s = detector.predict(img)
