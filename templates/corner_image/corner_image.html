@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="{{ url_for('static', filename = 'css/custom.css') }}">
     </head>
     <body>
+        {% include 'client/header.html' %}
         <div class="container-fluid">
             <div class="row mb-3">
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6" style="margin-top: 100px;">
@@ -28,8 +29,7 @@
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6" style="margin-top: 100px;">
                     <div class="drop-zone">
                         <ul>
-                            <p>{{ result }}</p>
-                            <img src="{{ result }}" alt="">
+                            <img style="width: 100%;" src="{{ result }}" alt="">
                         </ul>
                     </div>
                 </div>
