@@ -180,8 +180,10 @@ def crop_image_crop():
 def extract_image_extract():
     image = request.files['file']
     if image:
-        path = os.path.join("./static/images/gt_316/", image.filename)
+        # img = Image.open(image.filename)
+        path = os.path.join("./static/images/", image.filename)
         path = path.replace("\\", "/")
+        image.save(path)
         # imgdata = imgsrcstring.split(',')[1]
         # decoded = base64.b64decode(imgdata)
         result = extract2(path)
