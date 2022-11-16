@@ -25,17 +25,18 @@ def extract2(img):
     return s
 
 
-root_path = "D:/Nam-4/Nam-4/Phat-Trien-HTTM/psenet-text-detector-master/outputs/"
-for i in range(0, 101):
-    folder = root_path + 'CCCD' + str(i) + '_crops/'
-    for file in os.listdir(folder):
-        if file.endswith(".png") or file.endswith(".jpg"):
-            image = folder + file
-            img = Image.open(image)
-            s = detector.predict(img)
-            with codecs.open(image.split(".")[0] + '.txt', 'w+', 'utf-8') as text_file:
-                text_file.write('data/' + file + ' ' + s)
-    i = i + 1
+# root_path = "D:/Nam-4/Nam-4/Phat-Trien-HTTM/psenet-text-detector-master/outputs/"
+# for i in range(314, 424):
+#     folder_name = 'gt_' + str(i) + '_crops/'
+#     folder = root_path + folder_name
+#     for file in os.listdir(folder):
+#         if file.endswith(".png") or file.endswith(".jpg"):
+#             image = folder + file
+#             img = Image.open(image)
+#             s = detector.predict(img)
+#             with codecs.open('D:/Nam-4/Nam-4/Phat-Trien-HTTM/psenet-text-detector-master/outputs/result.txt', 'a+', 'utf-8') as text_file:
+#                 text_file.write('data/' + folder_name + file + ' ' + s + '\n')
+#     i = i + 1
     # print(s)
 
 # img = 'D:/Nam-4/Nam-4/Phat-Trien-HTTM/psenet-text-detector-master/outputs/gt_302_crops/crop_21.png'

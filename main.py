@@ -196,12 +196,12 @@ def corner_image_corner():
         path = path.replace("\\", "/")
         # imgdata = imgsrcstring.split(',')[1]
         # decoded = base64.b64decode(imgdata)
+        image.save(path)
         img = corner(path)
         im = Image.fromarray(img)
         path = os.path.join("./static/images/corner_result/", image.filename)
         im.save(path)
-        print(path)
-        return render_template('corner_image/corner_image.html', result=path)
+        return render_template('corner_image/corner_image.html', result='../../'+path)
 
 
 # Start Backend
